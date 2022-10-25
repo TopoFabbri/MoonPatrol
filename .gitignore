@@ -1,0 +1,4 @@
+*.vs/
+*Debug/
+*moonPatrol/Debug/
+*moonPatrol/x64/
