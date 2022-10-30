@@ -24,4 +24,14 @@ void enemyMovement()
 	{
 		enemy.x -= enemy.speed.x * GetFrameTime();
 	}
+
+	enemyTeleportation();
+}
+
+void enemyTeleportation()
+{
+	if (enemy.x < -40)
+	{
+		enemy.x = static_cast<float>(GetScreenWidth());
+	}
 }
