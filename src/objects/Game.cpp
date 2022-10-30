@@ -11,6 +11,7 @@ extern Enemy enemy;
 
 void drawGame();
 void input();
+void checkCollisions();
 
 
 void runGame()
@@ -31,8 +32,8 @@ void runGame()
 		input();
 
 		enemyMovement();
-  
 
+		checkCollisions();
 
 		BeginDrawing();
 		ClearBackground(BLACK);
@@ -57,12 +58,25 @@ void drawGame()
 
 void input()
 {
-	if (IsKeyPressed(KEY_W))
+	if (player.isAlive)
 	{
-		player.y = static_cast<float>(GetScreenHeight() / 1.5);
+		if (IsKeyPressed(KEY_W))
+		{
+			player.y = static_cast<float>(GetScreenHeight() / 1.5);
+		}
+		else if (IsKeyPressed(KEY_S))
+		{
+			player.y = static_cast<float>(GetScreenHeight() / 1.3);
+		}
 	}
-	else if (IsKeyPressed(KEY_S))
+	
+}
+
+void checkCollisions()
+{
+	if (CheckCollisionRecs(Rectangle{ player.x, player.y, 50, 20 }, Rectangle{ enemy.x, enemy.y, 40, 40 }))
 	{
-		player.y = static_cast<float>(GetScreenHeight() / 1.3);
+		player.isAlive = false;
+		enemy.isActive = false;
 	}
 }

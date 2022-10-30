@@ -7,6 +7,7 @@ struct Player
 {
 	float x;
 	float y;
+	bool isAlive;
 	Vector2 speed;
 
 };

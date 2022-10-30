@@ -7,6 +7,8 @@ void initEnemy()
 	enemy.x = static_cast<float>(GetScreenWidth() - GetScreenWidth() / 10);
 	enemy.y = static_cast<float>(GetScreenHeight() / 1.35);
 
+	enemy.isActive = true;
+
 	enemy.speed = { 200,200 };
 }
 
@@ -18,5 +20,8 @@ void drawEnemy()
 
 void enemyMovement()
 {
-	enemy.x -= enemy.speed.x * GetFrameTime();
+	if (enemy.isActive)
+	{
+		enemy.x -= enemy.speed.x * GetFrameTime();
+	}
 }

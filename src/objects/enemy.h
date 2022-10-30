@@ -5,6 +5,7 @@ struct Enemy
 {
 	float x;
 	float y;
+	bool isActive;
 	Vector2 speed;
 
 
