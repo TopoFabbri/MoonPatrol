@@ -27,12 +27,18 @@
     <ClCompile Include="..\src\objects\player.cpp">
       <Filter>objets</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\objects\enemy.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\objects\game.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\objects\player.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\enemy.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

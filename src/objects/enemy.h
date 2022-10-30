@@ -1,16 +1,15 @@
 #pragma once
 #include "raylib.h"
 
-
-
-struct Player
+struct Enemy
 {
 	float x;
 	float y;
 	Vector2 speed;
 
+
 };
 
-void initPlayer();
+void initEnemy();
 
-void drawPlayer();
+void drawEnemy();

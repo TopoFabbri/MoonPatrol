@@ -9,3 +9,9 @@ void initPlayer()
 
 	player.speed = { 200,200 };
 }
+
+void drawPlayer()
+{
+	DrawRectangle(static_cast<int>(player.x), static_cast<int>(player.y), 50, 20, RED);
+
+}
