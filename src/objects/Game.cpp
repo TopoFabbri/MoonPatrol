@@ -7,6 +7,7 @@
 
 
 extern Player player;
+extern Enemy enemy;
 
 void drawGame();
 
@@ -25,6 +26,8 @@ void runGame()
 
 	while (!WindowShouldClose())
 	{
+
+		enemyMovement();
   
 
 
