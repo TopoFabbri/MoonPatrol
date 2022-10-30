@@ -15,3 +15,8 @@ void drawEnemy()
 	DrawRectangle(static_cast<int>(enemy.x), static_cast<int>(enemy.y), 40, 40, RED);
 
 }
+
+void enemyMovement()
+{
+	enemy.x -= enemy.speed.x * GetFrameTime();
+}

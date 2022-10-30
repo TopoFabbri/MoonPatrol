@@ -10,6 +10,7 @@ extern Player player;
 extern Enemy enemy;
 
 void drawGame();
+void input();
 
 
 void runGame()
@@ -26,6 +27,8 @@ void runGame()
 
 	while (!WindowShouldClose())
 	{
+
+		input();
 
 		enemyMovement();
   
@@ -52,3 +55,14 @@ void drawGame()
 
 }
 
+void input()
+{
+	if (IsKeyPressed(KEY_W))
+	{
+		player.y = static_cast<float>(GetScreenHeight() / 1.5);
+	}
+	else if (IsKeyPressed(KEY_S))
+	{
+		player.y = static_cast<float>(GetScreenHeight() / 1.3);
+	}
+}

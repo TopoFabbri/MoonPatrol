@@ -13,3 +13,5 @@ struct Enemy
 void initEnemy();
 
 void drawEnemy();
+
+void enemyMovement();
