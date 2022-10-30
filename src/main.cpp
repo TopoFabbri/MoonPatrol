@@ -1,11 +1,11 @@
 //Tobias Godoy / Moon Patrol
-#include "objects/Game.h"
+#include "objects/game.h"
 
 
 int main()
 {
 
-
+	runGame();
 
 	return 0;
 }

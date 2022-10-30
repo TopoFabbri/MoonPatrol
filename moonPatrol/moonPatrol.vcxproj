@@ -171,11 +171,13 @@ XCOPY "$(SolutionDir)\res"  "$(TargetDir)res"
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\objects\game.cpp" />
+    <ClCompile Include="..\src\objects\player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="..\src\objects\game.h" />
+    <ClInclude Include="..\src\objects\player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
