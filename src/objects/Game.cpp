@@ -15,6 +15,7 @@ static void input();
 static void checkCollisions();
 static void drawMenu();
 static void drawCredits();
+static void jumpLogic();
 
 
 void runGame()
@@ -22,7 +23,7 @@ void runGame()
 
 	initGame();
 
-	int currentScreen = Credits;
+	int currentScreen = Gameplay;
 
 	while (!WindowShouldClose())
 	{
@@ -33,6 +34,8 @@ void runGame()
 			enemyMovement();
 
 			checkCollisions();
+
+			
 		}
 
 
@@ -78,15 +81,21 @@ void input()
 {
 	if (player.isAlive)
 	{
-		if (IsKeyPressed(KEY_W))
+		
+		if (IsKeyPressed(KEY_SPACE))
 		{
-			player.y = static_cast<float>(GetScreenHeight() / 1.5);
+			jumpLogic();
 		}
-		else if (IsKeyPressed(KEY_S))
+
+		if (player.isJumping == true)
 		{
-			player.y = static_cast<float>(GetScreenHeight() / 1.3);
+			player.gravity = player.gravity + player.weight * GetFrameTime();
+			player.y = player.y + player.gravity * GetFrameTime();
+
 		}
 	}
+
+
 
 }
 
@@ -97,6 +106,13 @@ void checkCollisions()
 		player.isAlive = false;
 		enemy.isActive = false;
 	}
+
+	if (CheckCollisionRecs(Rectangle{ player.x, player.y, 50, 20 }, Rectangle{ 0, GetScreenHeight() / 1.25f, static_cast<float>(GetScreenWidth()), GetScreenHeight() / 1.25f }))
+	{
+		player.isJumping = false;
+		player.gravity = 0;
+	}
+	
 }
 
 void initGame()
@@ -127,4 +143,19 @@ void drawCredits()
 {
 	DrawText("Made by Godoy Tobias", GetScreenWidth() / 2 - 250, GetScreenHeight() / 6, 50, RED);
 
+}
+
+void jumpLogic()
+{
+
+	player.gravity = -250;
+	player.y = player.y + player.gravity * GetFrameTime();
+
+	if (player.y > 440)
+	{
+		player.isJumping = true;
+	}
+	
+	
+		
 }

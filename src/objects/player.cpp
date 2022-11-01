@@ -9,6 +9,12 @@ void initPlayer()
 
 	player.isAlive = true;
 
+	player.gravity = 0;
+
+	player.isJumping = false;
+
+	player.weight = 400;
+
 	player.speed = { 200,200 };
 }
 
