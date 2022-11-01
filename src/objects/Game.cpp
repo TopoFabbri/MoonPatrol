@@ -9,11 +9,12 @@
 extern Player player;
 extern Enemy enemy;
 
-void initGame();
-void drawGame();
-void input();
-void checkCollisions();
-void drawMenu();
+static void initGame();
+static void drawGame();
+static void input();
+static void checkCollisions();
+static void drawMenu();
+static void drawCredits();
 
 
 void runGame()
@@ -21,7 +22,7 @@ void runGame()
 
 	initGame();
 
-	int currentScreen = Menu;
+	int currentScreen = Credits;
 
 	while (!WindowShouldClose())
 	{
@@ -50,6 +51,7 @@ void runGame()
 			drawGame();
 			break;
 		case Credits:
+			drawCredits();
 			break;
 		default:
 			break;
@@ -119,4 +121,10 @@ void drawMenu()
 
 	DrawText("Moon Patrol", GetScreenWidth() / 2 - titleLength / 2, GetScreenHeight() / 6, 50, RED);
 	DrawText("Press E to start...", GetScreenWidth() / 2 - titleLength / 2 - 80, GetScreenHeight() / 2, 50, RED);
+}
+
+void drawCredits()
+{
+	DrawText("Made by Godoy Tobias", GetScreenWidth() / 2 - 250, GetScreenHeight() / 6, 50, RED);
+
 }
