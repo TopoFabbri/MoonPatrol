@@ -9,36 +9,52 @@
 extern Player player;
 extern Enemy enemy;
 
+void initGame();
 void drawGame();
 void input();
 void checkCollisions();
+void drawMenu();
 
 
 void runGame()
 {
 
-	int screenWidth = 1024;
-	int screenHeight = 768;
+	initGame();
 
-	InitWindow(screenWidth, screenHeight, "Moon Patrol v0.1");
-	SetWindowState(FLAG_VSYNC_HINT);
-
-	initPlayer();
-	initEnemy();
+	int currentScreen = Menu;
 
 	while (!WindowShouldClose())
 	{
+		if (currentScreen == Gameplay)
+		{
+			input();
 
-		input();
+			enemyMovement();
 
-		enemyMovement();
+			checkCollisions();
+		}
 
-		checkCollisions();
+
+		if (currentScreen == Menu && IsKeyPressed(KEY_E))
+			currentScreen = Gameplay;
 
 		BeginDrawing();
 		ClearBackground(BLACK);
 
-		drawGame();
+		switch (currentScreen)
+		{
+		case Menu:
+			drawMenu();
+			break;
+		case Gameplay:
+			drawGame();
+			break;
+		case Credits:
+			break;
+		default:
+			break;
+		}
+
 
 		DrawFPS(10, 10);
 		EndDrawing();
@@ -69,7 +85,7 @@ void input()
 			player.y = static_cast<float>(GetScreenHeight() / 1.3);
 		}
 	}
-	
+
 }
 
 void checkCollisions()
@@ -79,4 +95,28 @@ void checkCollisions()
 		player.isAlive = false;
 		enemy.isActive = false;
 	}
+}
+
+void initGame()
+{
+
+	int screenWidth = 1024;
+	int screenHeight = 768;
+
+	InitWindow(screenWidth, screenHeight, "Moon Patrol v0.2");
+	SetWindowState(FLAG_VSYNC_HINT);
+
+	initPlayer();
+	initEnemy();
+
+}
+
+void drawMenu()
+{
+	int titleLength = MeasureText("Moon Patrol", 50);
+
+
+
+	DrawText("Moon Patrol", GetScreenWidth() / 2 - titleLength / 2, GetScreenHeight() / 6, 50, RED);
+	DrawText("Press E to start...", GetScreenWidth() / 2 - titleLength / 2 - 80, GetScreenHeight() / 2, 50, RED);
 }
