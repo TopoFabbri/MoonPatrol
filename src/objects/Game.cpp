@@ -37,7 +37,7 @@ void runGame()
 	float scrollingForest = 0.0f;
 	float scrollingGround = 0.0f;
 
-	int currentScreen = Gameplay;
+	int currentScreen = Menu;
 
 	while (!WindowShouldClose())
 	{
@@ -69,6 +69,8 @@ void runGame()
 
 		if (currentScreen == Menu && IsKeyPressed(KEY_E))
 			currentScreen = Gameplay;
+		if (currentScreen == Menu && IsKeyPressed(KEY_C))
+			currentScreen = Credits;
 
 		BeginDrawing();
 		ClearBackground(BLACK);
@@ -183,6 +185,7 @@ void drawMenu()
 
 	DrawText("Moon Patrol", GetScreenWidth() / 2 - titleLength / 2, GetScreenHeight() / 6, 50, RED);
 	DrawText("Press E to start...", GetScreenWidth() / 2 - titleLength / 2 - 80, GetScreenHeight() / 2, 50, RED);
+	DrawText("Press C to see credits...", GetScreenWidth() / 2 - titleLength / 2 - 80, 500, 50, RED);
 }
 
 void drawCredits()
