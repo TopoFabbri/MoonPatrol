@@ -37,11 +37,12 @@ void drawEnemy()
 
 }
 
-void enemyMovement()
+void enemyMovement(bool& scoreOnce)
 {
 	if (enemy.isActive)
 	{
 		enemy.x -= enemy.speed.x * GetFrameTime();
+		
 	}
 
 	for (int i = 0; i < maxAirEnemies; i++)
@@ -51,7 +52,7 @@ void enemyMovement()
 			airEnemies[i].x += airEnemies[i].speed.x * GetFrameTime();
 			airEnemies[i].y = airEnemies[i].y + airEnemies[i].speed.y * GetFrameTime();
 
-			if (airEnemies[i].y < 200)
+			if (airEnemies[i].y <= 200)
 			{
 				 airEnemies[i].speed.y *= - 1;
 			}
@@ -65,14 +66,15 @@ void enemyMovement()
 	}
 
 
-	enemyTeleportation();
+	enemyTeleportation(scoreOnce);
 }
 
-void enemyTeleportation()
+void enemyTeleportation(bool& scoreOnce)
 {
 	if (enemy.x < -40)
 	{
 		enemy.x = static_cast<float>(GetScreenWidth());
+		scoreOnce = false;
 	}
 
 	for (int i = 0; i < maxAirEnemies; i++)

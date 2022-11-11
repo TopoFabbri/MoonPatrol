@@ -19,6 +19,6 @@ Enemy initAirEnemy(Enemy enemys, float x);
 
 void drawEnemy();
 
-void enemyMovement();
+void enemyMovement(bool& scoreOnce);
 
-void enemyTeleportation();
+void enemyTeleportation(bool& scoreOnce);

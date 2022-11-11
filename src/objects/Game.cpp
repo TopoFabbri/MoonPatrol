@@ -42,6 +42,7 @@ void runGame()
 	float scrollingGround = 0.0f;
 
 	int currentBullets = 0;
+	bool scoreOnce = false;
 
 	int currentScreen = Menu;
 
@@ -71,7 +72,7 @@ void runGame()
 		{
 			input();
 
-			enemyMovement();
+			enemyMovement(scoreOnce);
 
 			bulletsMovement();
 
@@ -87,6 +88,11 @@ void runGame()
 			}
 		}
 
+		if (enemy.x < player.x && !scoreOnce)
+		{
+			player.score += 5;
+			scoreOnce = true;
+		}
 
 		if (currentScreen == Menu && IsKeyPressed(KEY_E))
 			currentScreen = Gameplay;
@@ -141,6 +147,8 @@ void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFar
 	DrawTextureEx(ground, Vector2{ scrollingGround, 130 }, 0.0f, 1.0f, WHITE);
 	DrawTextureEx(ground, Vector2{ ground.width + scrollingGround, 130 }, 0.0f, 1.0f, WHITE);
 
+	DrawText(TextFormat("Score: %i", player.score), 700, 10, 30, WHITE);
+
 	drawPlayer();
 	drawEnemy();
 	drawBullets();
@@ -190,8 +198,9 @@ void checkCollisions()
 		{
 			if (CheckCollisionCircleRec(Vector2{ bullets[i].x, bullets[i].y }, bullets[i].radius, Rectangle{ airEnemies[j].x, airEnemies[j].y, 40, 40 }) && bullets[i].isActive)
 			{
-				airEnemies[j].x = -20;
+				airEnemies[j].x = -50;
 				bullets[i].isActive = false;
+				player.score += 10;
 
 			}
 		}
@@ -239,7 +248,6 @@ void jumpLogic()
 	{
 		player.isJumping = true;
 	}
-
 
 
 }

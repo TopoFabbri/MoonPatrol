@@ -8,6 +8,7 @@ struct Player
 	float x;
 	float y;
 	float gravity;
+	int score;
 	int weight;
 	bool isAlive;
 	bool isJumping;
