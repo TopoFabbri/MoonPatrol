@@ -4,10 +4,13 @@
 
 #include "player.h"
 #include "enemy.h"
+#include "bullets.h"
 
 
 extern Player player;
 extern Enemy enemy;
+
+extern Bullet bullets[maxBullets];
 
 static void initGame();
 static void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFarMount, float scrollingFarMount,  Texture2D backgroundMountains,  float scrollingMountains, Texture2D backgroundTrees, float scrollingTrees, Texture2D backgroundForest, float scrollingForest, Texture2D ground, float scrollingGround);
@@ -37,6 +40,8 @@ void runGame()
 	float scrollingForest = 0.0f;
 	float scrollingGround = 0.0f;
 
+	int currentBullets = 0;
+
 	int currentScreen = Menu;
 
 	while (!WindowShouldClose())
@@ -48,11 +53,11 @@ void runGame()
 		scrollingForest -= 0.55f;
 		scrollingGround -= 0.75f;
 
-		if (scrollingBack <= -background.width ) scrollingBack = 0;
-		if (scrollingFarMount <= -backgroundFarMount.width *2 ) scrollingFarMount = 0;
-		if (scrollingMountains <= -backgroundMountains.width *2 ) scrollingMountains = 0;
-		if (scrollingTrees <= -backgroundTrees.width *2 ) scrollingTrees = 0;
-		if (scrollingForest <= -backgroundForest.width *2 ) scrollingForest = 0;
+		if (scrollingBack <= -background.width) scrollingBack = 0;
+		if (scrollingFarMount <= -backgroundFarMount.width * 2) scrollingFarMount = 0;
+		if (scrollingMountains <= -backgroundMountains.width * 2) scrollingMountains = 0;
+		if (scrollingTrees <= -backgroundTrees.width * 2) scrollingTrees = 0;
+		if (scrollingForest <= -backgroundForest.width * 2) scrollingForest = 0;
 		if (scrollingGround <= -ground.width) scrollingGround = 0;
 
 		if (currentScreen == Gameplay)
@@ -61,41 +66,50 @@ void runGame()
 
 			enemyMovement();
 
+			bulletsMovement();
+
 			checkCollisions();
 
-			
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && player.isAlive)
+			{
+				if (currentBullets >= maxBullets)
+					currentBullets = 0;
+
+				bullets[currentBullets] = initBullet(bullets[currentBullets], player);
+				currentBullets++;
+			}
 		}
 
 
-		if (currentScreen == Menu && IsKeyPressed(KEY_E))
-			currentScreen = Gameplay;
-		if (currentScreen == Menu && IsKeyPressed(KEY_C))
-			currentScreen = Credits;
+			if (currentScreen == Menu && IsKeyPressed(KEY_E))
+				currentScreen = Gameplay;
+			if (currentScreen == Menu && IsKeyPressed(KEY_C))
+				currentScreen = Credits;
 
-		BeginDrawing();
-		ClearBackground(BLACK);
+			BeginDrawing();
+			ClearBackground(BLACK);
 
-		switch (currentScreen)
-		{
-		case Menu:
-			drawMenu();
-			break;
-		case Gameplay:
-			drawGame(background,  scrollingBack,  backgroundFarMount,  scrollingFarMount,  backgroundMountains,  scrollingMountains,  backgroundTrees,  scrollingTrees,   backgroundForest,  scrollingForest,  ground,  scrollingGround);
-			break;
-		case Credits:
-			drawCredits();
-			break;
-		default:
-			break;
-		}
+			switch (currentScreen)
+			{
+			case Menu:
+				drawMenu();
+				break;
+			case Gameplay:
+				drawGame(background, scrollingBack, backgroundFarMount, scrollingFarMount, backgroundMountains, scrollingMountains, backgroundTrees, scrollingTrees, backgroundForest, scrollingForest, ground, scrollingGround);
+				break;
+			case Credits:
+				drawCredits();
+				break;
+			default:
+				break;
+			}
 
 
-		DrawFPS(10, 10);
-		EndDrawing();
+			DrawFPS(10, 10);
+			EndDrawing();
 
 	}
-	CloseWindow();
+		CloseWindow();
 }
 
 void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFarMount, float scrollingFarMount, Texture2D backgroundMountains, float scrollingMountains, Texture2D backgroundTrees, float scrollingTrees, Texture2D backgroundForest, float scrollingForest, Texture2D ground, float scrollingGround)
@@ -122,6 +136,7 @@ void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFar
 
 	drawPlayer();
 	drawEnemy();
+	drawBullets();
 
 
 }
@@ -170,7 +185,7 @@ void initGame()
 	int screenWidth = 1024;
 	int screenHeight = 768;
 
-	InitWindow(screenWidth, screenHeight, "Moon Patrol v0.2");
+	InitWindow(screenWidth, screenHeight, "Moon Patrol v0.3");
 	SetWindowState(FLAG_VSYNC_HINT);
 
 	initPlayer();

@@ -172,11 +172,13 @@ XCOPY "$(SolutionDir)\res"  "$(TargetDir)res"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\objects\bullets.cpp" />
     <ClCompile Include="..\src\objects\enemy.cpp" />
     <ClCompile Include="..\src\objects\game.cpp" />
     <ClCompile Include="..\src\objects\player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\objects\bullets.h" />
     <ClInclude Include="..\src\objects\enemy.h" />
     <ClInclude Include="..\src\objects\game.h" />
     <ClInclude Include="..\src\objects\player.h" />
