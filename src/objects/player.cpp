@@ -13,7 +13,7 @@ void initPlayer()
 
 	player.isJumping = false;
 
-	player.weight = 400;
+	player.weight = 600;
 
 	player.speed = { 200,200 };
 }

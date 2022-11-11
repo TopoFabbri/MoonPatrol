@@ -11,9 +11,10 @@ extern Player player;
 extern Enemy enemy;
 
 extern Bullet bullets[maxBullets];
+extern Enemy airEnemies[maxAirEnemies];
 
 static void initGame();
-static void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFarMount, float scrollingFarMount,  Texture2D backgroundMountains,  float scrollingMountains, Texture2D backgroundTrees, float scrollingTrees, Texture2D backgroundForest, float scrollingForest, Texture2D ground, float scrollingGround);
+static void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFarMount, float scrollingFarMount, Texture2D backgroundMountains, float scrollingMountains, Texture2D backgroundTrees, float scrollingTrees, Texture2D backgroundForest, float scrollingForest, Texture2D ground, float scrollingGround);
 static void input();
 static void checkCollisions();
 static void drawMenu();
@@ -43,6 +44,12 @@ void runGame()
 	int currentBullets = 0;
 
 	int currentScreen = Menu;
+
+
+	for (int i = 0; i < maxAirEnemies; i++)
+	{
+		airEnemies[i] = initAirEnemy(airEnemies[i], i * 100.0f);
+	}
 
 	while (!WindowShouldClose())
 	{
@@ -81,58 +88,58 @@ void runGame()
 		}
 
 
-			if (currentScreen == Menu && IsKeyPressed(KEY_E))
-				currentScreen = Gameplay;
-			if (currentScreen == Menu && IsKeyPressed(KEY_C))
-				currentScreen = Credits;
+		if (currentScreen == Menu && IsKeyPressed(KEY_E))
+			currentScreen = Gameplay;
+		if (currentScreen == Menu && IsKeyPressed(KEY_C))
+			currentScreen = Credits;
 
-			BeginDrawing();
-			ClearBackground(BLACK);
+		BeginDrawing();
+		ClearBackground(BLACK);
 
-			switch (currentScreen)
-			{
-			case Menu:
-				drawMenu();
-				break;
-			case Gameplay:
-				drawGame(background, scrollingBack, backgroundFarMount, scrollingFarMount, backgroundMountains, scrollingMountains, backgroundTrees, scrollingTrees, backgroundForest, scrollingForest, ground, scrollingGround);
-				break;
-			case Credits:
-				drawCredits();
-				break;
-			default:
-				break;
-			}
+		switch (currentScreen)
+		{
+		case Menu:
+			drawMenu();
+			break;
+		case Gameplay:
+			drawGame(background, scrollingBack, backgroundFarMount, scrollingFarMount, backgroundMountains, scrollingMountains, backgroundTrees, scrollingTrees, backgroundForest, scrollingForest, ground, scrollingGround);
+			break;
+		case Credits:
+			drawCredits();
+			break;
+		default:
+			break;
+		}
 
 
-			DrawFPS(10, 10);
-			EndDrawing();
+		DrawFPS(10, 10);
+		EndDrawing();
 
 	}
-		CloseWindow();
+	CloseWindow();
 }
 
 void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFarMount, float scrollingFarMount, Texture2D backgroundMountains, float scrollingMountains, Texture2D backgroundTrees, float scrollingTrees, Texture2D backgroundForest, float scrollingForest, Texture2D ground, float scrollingGround)
 {
-	DrawTextureEx(background, Vector2{scrollingBack, 0 }, 0.0f, 1.0f, WHITE);
-	DrawTextureEx(background, Vector2{ background.width  + scrollingBack, 0 }, 0.0f, 1.0f, WHITE);
+	DrawTextureEx(background, Vector2{ scrollingBack, 0 }, 0.0f, 1.0f, WHITE);
+	DrawTextureEx(background, Vector2{ background.width + scrollingBack, 0 }, 0.0f, 1.0f, WHITE);
 
-	DrawTextureEx(backgroundFarMount, Vector2{ scrollingFarMount, 220 }, 0.0f, 2.0f, WHITE); 
-	DrawTextureEx(backgroundFarMount, Vector2{ backgroundFarMount.width *2 + scrollingFarMount, 220 }, 0.0f, 2.0f, WHITE);
+	DrawTextureEx(backgroundFarMount, Vector2{ scrollingFarMount, 220 }, 0.0f, 2.0f, WHITE);
+	DrawTextureEx(backgroundFarMount, Vector2{ backgroundFarMount.width * 2 + scrollingFarMount, 220 }, 0.0f, 2.0f, WHITE);
 
 	DrawTextureEx(backgroundMountains, Vector2{ scrollingMountains, 220 }, 0.0f, 2.0f, WHITE);
-	DrawTextureEx(backgroundMountains, Vector2{ backgroundMountains.width *2 + scrollingMountains, 220 }, 0.0f, 2.0f, WHITE);
-	
+	DrawTextureEx(backgroundMountains, Vector2{ backgroundMountains.width * 2 + scrollingMountains, 220 }, 0.0f, 2.0f, WHITE);
+
 	DrawTextureEx(backgroundTrees, Vector2{ scrollingTrees, 250 }, 0.0f, 2.0f, WHITE);
-	DrawTextureEx(backgroundTrees, Vector2{ backgroundTrees.width *2 + scrollingTrees, 250 }, 0.0f, 2.0f, WHITE);
-	
+	DrawTextureEx(backgroundTrees, Vector2{ backgroundTrees.width * 2 + scrollingTrees, 250 }, 0.0f, 2.0f, WHITE);
+
 	DrawTextureEx(backgroundForest, Vector2{ scrollingForest, 250 }, 0.0f, 2.0f, WHITE);
-	DrawTextureEx(backgroundForest, Vector2{ backgroundForest.width *2 + scrollingForest, 250 }, 0.0f, 2.0f, WHITE);
-	
+	DrawTextureEx(backgroundForest, Vector2{ backgroundForest.width * 2 + scrollingForest, 250 }, 0.0f, 2.0f, WHITE);
+
 	DrawRectangle(0, static_cast<int>(GetScreenHeight() / 1.27f), GetScreenWidth(), static_cast<int>(GetScreenHeight() / 1.25f), BLACK);
 
 	DrawTextureEx(ground, Vector2{ scrollingGround, 130 }, 0.0f, 1.0f, WHITE);
-	DrawTextureEx(ground, Vector2{ ground.width  + scrollingGround, 130 }, 0.0f, 1.0f, WHITE);
+	DrawTextureEx(ground, Vector2{ ground.width + scrollingGround, 130 }, 0.0f, 1.0f, WHITE);
 
 	drawPlayer();
 	drawEnemy();
@@ -145,8 +152,8 @@ void input()
 {
 	if (player.isAlive)
 	{
-		
-		if (IsKeyPressed(KEY_SPACE))
+
+		if (IsKeyPressed(KEY_SPACE) && !player.isJumping)
 		{
 			jumpLogic();
 		}
@@ -171,12 +178,25 @@ void checkCollisions()
 		enemy.isActive = false;
 	}
 
-	if (CheckCollisionRecs(Rectangle{ player.x, player.y, 50, 20 }, Rectangle{ 0, GetScreenHeight() / 1.25f, static_cast<float>(GetScreenWidth()), GetScreenHeight() / 1.25f }))
+	if (CheckCollisionRecs(Rectangle{ player.x, player.y, 50, 20 }, Rectangle{ 0, GetScreenHeight() / 1.27f, static_cast<float>(GetScreenWidth()), GetScreenHeight() / 1.25f }))
 	{
 		player.isJumping = false;
 		player.gravity = 0;
 	}
-	
+
+	for (int i = 0; i < maxBullets; i++)
+	{
+		for (int j = 0; j < maxAirEnemies; j++)
+		{
+			if (CheckCollisionCircleRec(Vector2{ bullets[i].x, bullets[i].y }, bullets[i].radius, Rectangle{ airEnemies[j].x, airEnemies[j].y, 40, 40 }) && bullets[i].isActive)
+			{
+				airEnemies[j].x = -20;
+				bullets[i].isActive = false;
+
+			}
+		}
+	}
+
 }
 
 void initGame()
@@ -212,14 +232,14 @@ void drawCredits()
 void jumpLogic()
 {
 
-	player.gravity = -250;
+	player.gravity = -320;
 	player.y = player.y + player.gravity * GetFrameTime();
 
 	if (player.y > 440)
 	{
 		player.isJumping = true;
 	}
-	
-	
-		
+
+
+
 }

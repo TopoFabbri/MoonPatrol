@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 
+const int maxAirEnemies = 5;
+
 struct Enemy
 {
 	float x;
@@ -12,6 +14,8 @@ struct Enemy
 };
 
 void initEnemy();
+
+Enemy initAirEnemy(Enemy enemys, float x);
 
 void drawEnemy();
 
