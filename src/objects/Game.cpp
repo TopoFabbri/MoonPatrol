@@ -153,6 +153,13 @@ void drawGame(Texture2D background, float scrollingBack, Texture2D backgroundFar
 	drawEnemy();
 	drawBullets();
 
+	if (!player.isAlive)
+	{
+		DrawRectangle(GetScreenWidth() / 2 - 225, GetScreenHeight() / 2 - 125, 450, 250, BLACK);
+		
+		DrawText("Game Over", GetScreenWidth() / 2 - 140, GetScreenHeight() / 2 - 20, 60, RED);
+		DrawText(TextFormat("Score: %i", player.score), GetScreenWidth() / 2 - 140, GetScreenHeight() / 2 + 50, 30, RED);
+	}
 
 }
 
@@ -184,6 +191,11 @@ void checkCollisions()
 	{
 		player.isAlive = false;
 		enemy.isActive = false;
+		for (int i = 0; i < maxAirEnemies; i++)
+		{
+			airEnemies[i].isActive = false;
+		}
+		
 	}
 
 	if (CheckCollisionRecs(Rectangle{ player.x, player.y, 50, 20 }, Rectangle{ 0, GetScreenHeight() / 1.27f, static_cast<float>(GetScreenWidth()), GetScreenHeight() / 1.25f }))
