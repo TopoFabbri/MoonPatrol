@@ -33,6 +33,27 @@
     <ClCompile Include="..\src\objects\bullets.cpp">
       <Filter>objets</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\objects\Button.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Topo.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\MainMenu.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\Text.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\GameSession.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\GameSettings.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\CheckBox.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\objects\game.h">
@@ -45,6 +66,27 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\objects\bullets.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Topo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\Button.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\MainMenu.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\Text.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\GameSession.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\GameSettings.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\CheckBox.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

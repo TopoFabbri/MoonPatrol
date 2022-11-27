@@ -16,6 +16,6 @@ struct Bullet
 
 Bullet initBullet(Bullet bullet, Player player);
 
-void drawBullets();
+void drawBullets(Bullet bullets[]);
 
-void bulletsMovement();
+void bulletsMovement(Bullet bullets[]);

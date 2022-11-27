@@ -1,7 +1,5 @@
 #include "bullets.h"
 
-Bullet bullets[maxBullets];
-
 Bullet initBullet(Bullet bullet, Player player)
 {
 	bullet.radius = 5;
@@ -18,7 +16,7 @@ Bullet initBullet(Bullet bullet, Player player)
 
 }
 
-void drawBullets()
+void drawBullets(Bullet bullets[])
 {
 	for (int i = 0; i < maxBullets; i++)
 	{
@@ -29,7 +27,7 @@ void drawBullets()
 	}
 }
 
-void bulletsMovement()
+void bulletsMovement(Bullet bullets[])
 {
 	for (int i = 0; i < maxBullets; i++)
 	{

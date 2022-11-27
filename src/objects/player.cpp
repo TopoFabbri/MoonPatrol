@@ -1,11 +1,11 @@
 #include "player.h"
 
-Player player;
-
-void initPlayer()
+void initPlayer(Player& player)
 {
 	player.x = static_cast<float>(GetScreenWidth() / 4.2);
 	player.y = static_cast<float>(GetScreenHeight() / 1.3);
+
+	player.score = 0;
 
 	player.isAlive = true;
 
@@ -18,7 +18,7 @@ void initPlayer()
 	player.speed = { 200,200 };
 }
 
-void drawPlayer()
+void drawPlayer(Player& player)
 {
 	if (player.isAlive)
 	{

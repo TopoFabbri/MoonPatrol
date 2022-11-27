@@ -9,16 +9,14 @@ struct Enemy
 	float y;
 	bool isActive;
 	Vector2 speed;
-
-
 };
 
-void initEnemy();
+void initEnemy(Enemy& enemy);
 
-Enemy initAirEnemy(Enemy enemys, float x);
+Enemy initAirEnemy(Enemy enemies, float x);
 
-void drawEnemy();
+void drawEnemy(Enemy& enemy, Enemy airEnemies[]);
 
-void enemyMovement(bool& scoreOnce);
+void enemyMovement(bool& scoreOnce, Enemy& enemy, Enemy airEnemies[]);
 
-void enemyTeleportation(bool& scoreOnce);
+void enemyTeleportation(bool& scoreOnce, Enemy& enemy, Enemy airEnemies[]);

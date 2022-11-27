@@ -16,6 +16,6 @@ struct Player
 
 };
 
-void initPlayer();
+void initPlayer(Player& player);
 
-void drawPlayer();
+void drawPlayer(Player& player);
