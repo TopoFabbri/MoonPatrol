@@ -40,9 +40,11 @@ GameSession::~GameSession()
 {
 }
 
-void GameSession::start()
+void GameSession::start(GameSettings* settings)
 {
 	isActive = true;
+
+	gSettings = settings;
 
 	initGame();
 
@@ -93,9 +95,9 @@ void GameSession::update()
 
 	checkCollisions();
 
-	if (player.isAlive)
+	if (player.isAlive && (player2.isAlive || !gSettings->multiplayer))
 	{
-		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		if (IsKeyPressed(KEY_D))
 		{
 			if (curBullets >= maxBullets)
 				curBullets = 0;
@@ -104,11 +106,21 @@ void GameSession::update()
 			curBullets++;
 		}
 
+		if (IsKeyPressed(KEY_LEFT))
+		{
+			if (curBullets >= maxBullets)
+				curBullets = 0;
+
+			bullets[curBullets] = initBullet(bullets[curBullets], player2);
+			curBullets++;
+		}
+
 		if (enemy.x < player.x && !scoreOnce)
 		{
 			player.score += 5;
 			scoreOnce = true;
 		}
+
 	}
 	else if (IsKeyPressed(KEY_SPACE))
 	{
@@ -117,10 +129,10 @@ void GameSession::update()
 	}
 }
 
-void GameSession::play()
+void GameSession::play(GameSettings* settings)
 {
 	if (!isActive)
-		start();
+		start(settings);
 
 	update();
 
@@ -154,14 +166,20 @@ void GameSession::drawGame()
 
 	DrawText(TextFormat("Score: %i", player.score), 700, 10, 30, WHITE);
 
+	DrawText((gSettings->multiplayer ? "multiplayer" : "singleplayer"), 5, 5, 20, WHITE);
+
 	drawPlayer(player);
+
+	if (gSettings->multiplayer)
+		drawPlayer(player2);
+
 	drawEnemy(enemy, airEnemies);
 	drawBullets(bullets);
 
-	if (!player.isAlive)
+	if (!player.isAlive || (gSettings->multiplayer && !player2.isAlive))
 	{
 		Text* gameOver = new Text("Game Over", 60, GetScreenWidth() / 2, GetScreenHeight() / 2 - 20, RED);
-		Text* score = new Text(TextFormat("Score: %i", player.score), 30, 
+		Text* score = new Text(TextFormat("Score: %i", player.score), 30,
 			GetScreenWidth() / 2, GetScreenHeight() / 2 + 50, RED);
 		Text* next = new Text("Press 'space' to continue", 30, GetScreenWidth() / 2, GetScreenHeight() / 2 + 80, WHITE);
 
@@ -179,16 +197,29 @@ void GameSession::input()
 {
 	if (player.isAlive)
 	{
-		if (IsKeyPressed(KEY_SPACE) && !player.isJumping)
+		if (IsKeyPressed(KEY_W) && !player.isJumping)
 		{
-			jumpLogic();
+			jumpLogic(player);
 		}
 
 		if (player.isJumping == true)
 		{
 			player.gravity = player.gravity + player.weight * GetFrameTime();
 			player.y = player.y + player.gravity * GetFrameTime();
+		}
+	}
 
+	if (player2.isAlive)
+	{
+		if (IsKeyPressed(KEY_UP) && !player2.isJumping)
+		{
+			jumpLogic(player2);
+		}
+
+		if (player2.isJumping == true)
+		{
+			player2.gravity = player2.gravity + player2.weight * GetFrameTime();
+			player2.y = player2.y + player2.gravity * GetFrameTime();
 		}
 	}
 }
@@ -203,13 +234,31 @@ void GameSession::checkCollisions()
 		{
 			airEnemies[i].isActive = false;
 		}
-
 	}
 
 	if (CheckCollisionRecs(Rectangle{ player.x, player.y, 50, 20 }, Rectangle{ 0, GetScreenHeight() / 1.27f, static_cast<float>(GetScreenWidth()), GetScreenHeight() / 1.25f }))
 	{
 		player.isJumping = false;
 		player.gravity = 0;
+	}
+
+	if (gSettings->multiplayer)
+	{
+		if (CheckCollisionRecs(Rectangle{ player2.x, player2.y, 50, 20 }, Rectangle{ enemy.x, enemy.y, 40, 40 }))
+		{
+			player2.isAlive = false;
+			enemy.isActive = false;
+			for (int i = 0; i < maxAirEnemies; i++)
+			{
+				airEnemies[i].isActive = false;
+			}
+		}
+
+		if (CheckCollisionRecs(Rectangle{ player2.x, player2.y, 50, 20 }, Rectangle{ 0, GetScreenHeight() / 1.27f, static_cast<float>(GetScreenWidth()), GetScreenHeight() / 1.25f }))
+		{
+			player2.isJumping = false;
+			player2.gravity = 0;
+		}
 	}
 
 	for (int i = 0; i < maxBullets; i++)
@@ -229,25 +278,16 @@ void GameSession::checkCollisions()
 
 void GameSession::initGame()
 {
-	initPlayer(player);
+	initPlayer(player, static_cast<float>(GetScreenWidth()) / 4.2f);
+	initPlayer(player2, static_cast<float>(GetScreenWidth()) / 4.2f + 60);
 	initEnemy(enemy);
 }
 
-//void Game::drawCredits()
-//{
-//	int txtSize[] = { MeasureText("Made by Godoy Tobias", 50), MeasureText("and Fabbri Mateo", 50) };
-//	DrawText("Made by Godoy Tobias", GetScreenWidth() / 2 - txtSize[0] / 2, GetScreenHeight() / 6, 50, RED);
-//	DrawText("and Fabbri Mateo", GetScreenWidth() / 2 - txtSize[1] / 2, GetScreenHeight() / 3, 50, RED);
-//}
-//
-
-void GameSession::jumpLogic()
+void GameSession::jumpLogic(Player& pj)
 {
-	player.gravity = -320;
-	player.y = player.y + player.gravity * GetFrameTime();
+	pj.gravity = -320;
+	pj.y = pj.y + pj.gravity * GetFrameTime();
 
-	if (player.y > 440)
-	{
-		player.isJumping = true;
-	}
+	if (pj.y > 440)
+		pj.isJumping = true;
 }

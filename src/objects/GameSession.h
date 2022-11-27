@@ -28,6 +28,7 @@ private:
 	Texture2D ground;
 
 	Player player;
+	Player player2;
 	Enemy enemy;
 	Bullet bullets[maxBullets];
 	Enemy airEnemies[maxAirEnemies];
@@ -38,13 +39,13 @@ public:
 	GameSession(GameSettings* gSettings);
 	~GameSession();
 
-	void start();
+	void start(GameSettings* settings);
 	void update();
-	void play();
+	void play(GameSettings* settings);
 
 	void drawGame();
 	void input();
 	void checkCollisions();
 	void initGame();
-	void jumpLogic();
+	void jumpLogic(Player& pj);
 };

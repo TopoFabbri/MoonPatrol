@@ -2,15 +2,18 @@
 
 #include <raylib.h>
 
-struct CheckBox
+class CheckBox
 {
+public:
 	const char* txt;
 	Rectangle rec;
 	bool checked;
 	Color out;
 	Color empty;
 	Color fill;
-};
 
-CheckBox createCheckbox();
-void drawCheckbox(CheckBox& check);
+	CheckBox();
+	~CheckBox();
+
+	void draw();
+};

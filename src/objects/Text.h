@@ -16,6 +16,7 @@ public:
 	~Text();
 
 	void setPos(int x, int y);
+	int measure();
 	int textSize();
 	void draw();
 };

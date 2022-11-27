@@ -3,7 +3,7 @@
 
 #include "player.h"
 
-const int maxBullets = 20;
+const int maxBullets = 40;
 
 struct Bullet
 {

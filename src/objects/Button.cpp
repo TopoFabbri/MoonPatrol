@@ -46,7 +46,7 @@ void Button::draw()
 
 bool Button::isPressed()
 {
-	return (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) &&
+	return (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) &&
 		CheckCollisionPointRec(GetMousePosition(), rec));
 }
 

@@ -19,6 +19,11 @@ void Text::setPos(int newX, int newY)
 	y = newY;
 }
 
+int Text::measure()
+{
+	return MeasureText(text, size);
+}
+
 int Text::textSize()
 {
 	return MeasureText(text, size);

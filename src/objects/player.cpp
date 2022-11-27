@@ -1,8 +1,8 @@
 #include "player.h"
 
-void initPlayer(Player& player)
+void initPlayer(Player& player, float x)
 {
-	player.x = static_cast<float>(GetScreenWidth() / 4.2);
+	player.x = x;
 	player.y = static_cast<float>(GetScreenHeight() / 1.3);
 
 	player.score = 0;
@@ -24,5 +24,4 @@ void drawPlayer(Player& player)
 	{
 		DrawRectangle(static_cast<int>(player.x), static_cast<int>(player.y), 50, 20, RED);
 	}
-
 }

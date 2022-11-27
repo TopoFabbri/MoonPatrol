@@ -12,6 +12,7 @@ private:
 	bool isActive;
 
 	Text* title;
+	Text* version;
 	Button* play;
 	Button* credits;
 	CheckBox* multiplayer;
