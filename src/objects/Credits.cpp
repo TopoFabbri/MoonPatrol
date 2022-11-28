@@ -5,7 +5,7 @@ Credits::Credits()
 	title = new Text("Credits:", 60, GetScreenWidth() / 2, GetScreenHeight() / 2 - 100, GREEN);
 	dev1 = new Text("Tobias Godoy", 30, GetScreenWidth() / 2, GetScreenHeight() / 2 - 50, WHITE);
 	dev2 = new Text("Mateo Fabbri", 30, GetScreenWidth() / 2, GetScreenHeight() / 2, WHITE);
-	version = new Text("0.4", 30, 0, 5, RED);
+	version = new Text("1.0", 30, 0, 5, RED);
 	back = new Button();
 }
 

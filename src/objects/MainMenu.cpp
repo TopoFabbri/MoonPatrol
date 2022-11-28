@@ -5,7 +5,7 @@ MainMenu::MainMenu()
 	isActive = false;
 
 	title = new Text("Main Menu", 50, GetScreenWidth() / 2, GetScreenHeight() / 8, WHITE);
-	version = new Text("0.4", 30, 0, 5, RED);
+	version = new Text("1.0", 30, 0, 5, RED);
 	play = new Button();
 	credits = new Button();
 	controls = new Button();
