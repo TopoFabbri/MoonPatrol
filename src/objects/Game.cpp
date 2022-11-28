@@ -8,6 +8,7 @@ Game::Game()
 	gSettings = new GameSettings();
 	gameSession = new GameSession(gSettings);
 	creds = new Credits();
+	controls = new Controls();
 }
 
 Game::~Game()
@@ -32,6 +33,10 @@ void Game::runGame()
 
 		case GameSettings::Credits:
 			creds->run(gSettings);
+			break;
+
+		case GameSettings::Controls:
+			controls->run(gSettings);
 			break;
 
 		default:;

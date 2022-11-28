@@ -57,6 +57,9 @@
     <ClCompile Include="..\src\objects\Credits.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\objects\Controls.cpp">
+      <Filter>objets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\objects\game.h">
@@ -93,6 +96,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\objects\Credits.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\Controls.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,6 +15,7 @@ private:
 	Text* version;
 	Button* play;
 	Button* credits;
+	Button* controls;
 	CheckBox* multiplayer;
 
 public:
@@ -22,6 +23,7 @@ public:
 	~MainMenu();
 
 	void run(GameSettings* settings);
+
 	void start();
 	void update(GameSettings* settings);
 	void draw();

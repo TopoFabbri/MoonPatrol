@@ -18,10 +18,10 @@ void initPlayer(Player& player, float x)
 	player.speed = { 200,200 };
 }
 
-void drawPlayer(Player& player)
+void drawPlayer(Player& player, Color color)
 {
 	if (player.isAlive)
 	{
-		DrawRectangle(static_cast<int>(player.x), static_cast<int>(player.y), 50, 20, RED);
+		DrawRectangle(static_cast<int>(player.x), static_cast<int>(player.y), 50, 20, color);
 	}
 }

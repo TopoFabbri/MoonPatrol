@@ -175,6 +175,7 @@ XCOPY "$(SolutionDir)\res"  "$(TargetDir)res"
     <ClCompile Include="..\src\objects\bullets.cpp" />
     <ClCompile Include="..\src\objects\Button.cpp" />
     <ClCompile Include="..\src\objects\CheckBox.cpp" />
+    <ClCompile Include="..\src\objects\Controls.cpp" />
     <ClCompile Include="..\src\objects\Credits.cpp" />
     <ClCompile Include="..\src\objects\enemy.cpp" />
     <ClCompile Include="..\src\objects\game.cpp" />
@@ -189,6 +190,7 @@ XCOPY "$(SolutionDir)\res"  "$(TargetDir)res"
     <ClInclude Include="..\src\objects\bullets.h" />
     <ClInclude Include="..\src\objects\Button.h" />
     <ClInclude Include="..\src\objects\CheckBox.h" />
+    <ClInclude Include="..\src\objects\Controls.h" />
     <ClInclude Include="..\src\objects\Credits.h" />
     <ClInclude Include="..\src\objects\enemy.h" />
     <ClInclude Include="..\src\objects\game.h" />

@@ -13,9 +13,8 @@ struct Player
 	bool isAlive;
 	bool isJumping;
 	Vector2 speed;
-
 };
 
 void initPlayer(Player& player, float x);
 
-void drawPlayer(Player& player);
+void drawPlayer(Player& player, Color color);

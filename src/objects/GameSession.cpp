@@ -168,10 +168,10 @@ void GameSession::drawGame()
 
 	DrawText((gSettings->multiplayer ? "multiplayer" : "singleplayer"), 5, 5, 20, WHITE);
 
-	drawPlayer(player);
+	drawPlayer(player, BLUE);
 
 	if (gSettings->multiplayer)
-		drawPlayer(player2);
+		drawPlayer(player2, RED);
 
 	drawEnemy(enemy, airEnemies);
 	drawBullets(bullets);

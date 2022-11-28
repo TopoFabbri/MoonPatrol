@@ -7,7 +7,8 @@ public:
 	{
 		Menu,
 		Gameplay,
-		Credits
+		Credits,
+		Controls,
 	};
 
 	Scenes curScene;
