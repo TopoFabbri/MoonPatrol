@@ -106,7 +106,13 @@ void GameSession::update()
 			curBullets++;
 		}
 
-		if (IsKeyPressed(KEY_LEFT))
+		if (enemy.x < player.x && !scoreOnce)
+		{
+			player.score += 5;
+			scoreOnce = true;
+		}
+
+		if (IsKeyPressed(KEY_LEFT) && gSettings->multiplayer)
 		{
 			if (curBullets >= maxBullets)
 				curBullets = 0;
@@ -114,14 +120,8 @@ void GameSession::update()
 			bullets[curBullets] = initBullet(bullets[curBullets], player2);
 			curBullets++;
 		}
-
-		if (enemy.x < player.x && !scoreOnce)
-		{
-			player.score += 5;
-			scoreOnce = true;
-		}
-
 	}
+
 	else if (IsKeyPressed(KEY_SPACE))
 	{
 		gSettings->curScene = GameSettings::Menu;

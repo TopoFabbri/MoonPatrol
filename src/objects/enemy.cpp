@@ -55,10 +55,9 @@ void enemyMovement(bool& scoreOnce, Enemy& enemy, Enemy airEnemies[])
 			else if (airEnemies[i].y >= 400)
 			{
 				airEnemies[i].speed.y *= -1;
+				 airEnemies[i].y = 399;
 			}
-
 		}
-
 	}
 
 	enemyTeleportation(scoreOnce, enemy, airEnemies);
