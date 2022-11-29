@@ -4,12 +4,12 @@ GameSession::GameSession(GameSettings* gSettings)
 {
 	isActive = false;
 
-	background = LoadTexture("../res/parallax-mountain-bg.png");
-	backgroundFarMount = LoadTexture("../res/parallax-mountain-montain-far.png");
-	backgroundMountains = LoadTexture("../res/parallax-mountain-mountains.png");
-	backgroundTrees = LoadTexture("../res/parallax-mountain-trees.png");
-	backgroundForest = LoadTexture("../res/parallaxForest.png");
-	ground = LoadTexture("../res/ground.png");
+	background = LoadTexture("res/parallax-mountain-bg.png");
+	backgroundFarMount = LoadTexture("res/parallax-mountain-montain-far.png");
+	backgroundMountains = LoadTexture("res/parallax-mountain-mountains.png");
+	backgroundTrees = LoadTexture("res/parallax-mountain-trees.png");
+	backgroundForest = LoadTexture("res/parallaxForest.png");
+	ground = LoadTexture("res/ground.png");
 
 	scrollingBack = 0.0f;
 	scrollingFarMount = 0.0f;

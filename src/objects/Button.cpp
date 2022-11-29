@@ -27,7 +27,7 @@ void Button::update()
 void Button::draw()
 {
 	const Rectangle source{ 0, 0, (float)sprite.width, (float)sprite.height };
-	const float rot = 3;
+	const float rot = 10;
 
 	if (CheckCollisionPointRec(GetMousePosition(), rec))
 	{
