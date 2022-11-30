@@ -2,21 +2,24 @@
 
 #include "Topo.h"
 
-class Text
+namespace Topo
 {
-public:
-	const char* text;
-	int size;
-	int x;
-	int y;
+	class Text
+	{
+	public:
+		const char* text;
+		int size;
+		int x;
+		int y;
 
-	Color color;
+		Color color;
 
-	Text(const char *newText, int newSize, int x, int y, Color color);
-	~Text();
+		Text(const char* newText, int newSize, int x, int y, Color color);
+		~Text();
 
-	void setPos(int x, int y);
-	int measure();
-	int textSize();
-	void draw();
-};
+		void setPos(int x, int y);
+		int measure();
+		int textSize();
+		void draw();
+	};
+}

@@ -1,22 +1,26 @@
 #pragma once
 #include "raylib.h"
 
-const int maxAirEnemies = 5;
-
-struct Enemy
+namespace Topo
 {
-	float x;
-	float y;
-	bool isActive;
-	Vector2 speed;
-};
+	const int maxAirEnemies = 5;
 
-void initEnemy(Enemy& enemy);
+	struct Enemy
+	{
+		float x;
+		float y;
+		bool isActive;
+		Vector2 speed;
+	};
 
-Enemy initAirEnemy(Enemy enemies, float x);
+	void initEnemy(Enemy& enemy);
 
-void drawEnemy(Enemy& enemy, Enemy airEnemies[]);
+	Enemy initAirEnemy(Enemy enemies, float x);
 
-void enemyMovement(bool& scoreOnce, Enemy& enemy, Enemy airEnemies[]);
+	void drawEnemy(Enemy& enemy, Enemy airEnemies[]);
 
-void enemyTeleportation(bool& scoreOnce, Enemy& enemy, Enemy airEnemies[]);
+	void enemyMovement(bool& scoreOnce, Enemy& enemy, Enemy airEnemies[]);
+
+	void enemyTeleportation(bool& scoreOnce, Enemy& enemy, Enemy airEnemies[]);
+
+}

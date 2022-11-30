@@ -2,18 +2,21 @@
 
 #include <raylib.h>
 
-class CheckBox
+namespace Topo
 {
-public:
-	const char* txt;
-	Rectangle rec;
-	bool checked;
-	Color out;
-	Color empty;
-	Color fill;
+	class CheckBox
+	{
+	public:
+		const char* txt;
+		Rectangle rec;
+		bool checked;
+		Color out;
+		Color empty;
+		Color fill;
 
-	CheckBox();
-	~CheckBox();
+		CheckBox();
+		~CheckBox();
 
-	void draw();
-};
+		void draw();
+	};
+}

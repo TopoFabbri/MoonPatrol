@@ -6,46 +6,49 @@
 #include "objects/enemy.h"
 #include "objects/Text.h"
 
-class GameSession
+namespace Topo
 {
-private:
-	bool isActive;
-	float scrollingBack;
-	float scrollingFarMount;
-	float scrollingMountains;
-	float scrollingTrees;
-	float scrollingForest;
-	float scrollingGround;
+	class GameSession
+	{
+	private:
+		bool isActive;
+		float scrollingBack;
+		float scrollingFarMount;
+		float scrollingMountains;
+		float scrollingTrees;
+		float scrollingForest;
+		float scrollingGround;
 
-	int curBullets;
-	bool scoreOnce;
+		int curBullets;
+		bool scoreOnce;
 
-	Texture2D background;
-	Texture2D backgroundFarMount;
-	Texture2D backgroundMountains;
-	Texture2D backgroundTrees;
-	Texture2D backgroundForest;
-	Texture2D ground;
+		Texture2D background;
+		Texture2D backgroundFarMount;
+		Texture2D backgroundMountains;
+		Texture2D backgroundTrees;
+		Texture2D backgroundForest;
+		Texture2D ground;
 
-	Player player;
-	Player player2;
-	Enemy enemy;
-	Bullet bullets[maxBullets];
-	Enemy airEnemies[maxAirEnemies];
+		Player player;
+		Player player2;
+		Enemy enemy;
+		Bullet bullets[maxBullets];
+		Enemy airEnemies[maxAirEnemies];
 
-	GameSettings* gSettings;
+		GameSettings* gSettings;
 
-public:
-	GameSession(GameSettings* gSettings);
-	~GameSession();
+	public:
+		GameSession(GameSettings* gSettings);
+		~GameSession();
 
-	void start(GameSettings* settings);
-	void update();
-	void play(GameSettings* settings);
+		void start(GameSettings* settings);
+		void update();
+		void play(GameSettings* settings);
 
-	void drawGame();
-	void input();
-	void checkCollisions();
-	void initGame();
-	void jumpLogic(Player& pj);
-};
+		void drawGame();
+		void input();
+		void checkCollisions();
+		void initGame();
+		void jumpLogic(Player& pj);
+	};
+}

@@ -7,18 +7,22 @@
 #include "GameSession.h"
 #include "GameSettings.h"
 
-class Game
+namespace Topo
 {
-private:
-	GameSession* gameSession;
-	MainMenu* mMenu;
-	GameSettings* gSettings;
-	Credits* creds;
-	Controls* controls;
+	class Game
+	{
+	private:
+		GameSession* gameSession;
+		MainMenu* mMenu;
+		GameSettings* gSettings;
+		Credits* creds;
+		Controls* controls;
 
-public:
-	Game();
-	~Game();
+	public:
+		Game();
+		~Game();
 
-	void runGame();
-};
+		void runGame();
+	};
+
+}

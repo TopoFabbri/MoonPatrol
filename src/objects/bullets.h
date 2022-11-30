@@ -3,19 +3,22 @@
 
 #include "player.h"
 
-const int maxBullets = 40;
-
-struct Bullet
+namespace Topo
 {
-	float x;
-	float y;
-	float radius;
-	bool isActive;
-	Vector2 speed;
-};
+	const int maxBullets = 40;
 
-Bullet initBullet(Bullet bullet, Player player);
+	struct Bullet
+	{
+		float x;
+		float y;
+		float radius;
+		bool isActive;
+		Vector2 speed;
+	};
 
-void drawBullets(Bullet bullets[]);
+	Bullet initBullet(Bullet bullet, Player player);
 
-void bulletsMovement(Bullet bullets[]);
+	void drawBullets(Bullet bullets[]);
+
+	void bulletsMovement(Bullet bullets[]);
+}

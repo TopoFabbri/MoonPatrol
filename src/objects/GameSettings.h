@@ -1,19 +1,22 @@
 #pragma once
-class GameSettings
+namespace Topo
 {
-private:
-public:
-	enum Scenes
+	class GameSettings
 	{
-		Menu,
-		Gameplay,
-		Credits,
-		Controls,
+	private:
+	public:
+		enum Scenes
+		{
+			Menu,
+			Gameplay,
+			Credits,
+			Controls,
+		};
+
+		Scenes curScene;
+		bool multiplayer;
+
+		GameSettings();
+		~GameSettings();
 	};
-
-	Scenes curScene;
-	bool multiplayer;
-
-	GameSettings();
-	~GameSettings();
-};
+}

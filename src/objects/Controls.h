@@ -3,24 +3,27 @@
 #include "GameSettings.h"
 #include "Text.h"
 
-class Controls
+namespace Topo
 {
-private:
-	Text* title;
-	Text* player1;
-	Text* jump1;
-	Text* fire1;
-	Text* player2;
-	Text* jump2;
-	Text* fire2;
-	Button* back;
+	class Controls
+	{
+	private:
+		Text* title;
+		Text* player1;
+		Text* jump1;
+		Text* fire1;
+		Text* player2;
+		Text* jump2;
+		Text* fire2;
+		Button* back;
 
-public:
-	Controls();
-	~Controls();
+	public:
+		Controls();
+		~Controls();
 
-	void update(GameSettings* settings);
-	void draw();
+		void update(GameSettings* settings);
+		void draw();
 
-	void run(GameSettings* settings);
-};
+		void run(GameSettings* settings);
+	};
+}

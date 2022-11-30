@@ -2,27 +2,30 @@
 
 #include <raylib.h>
 
-class Button
+namespace Topo
 {
-private:
-	Rectangle rec;
-	Color normal;
-	Color hovered;
-	Color txtColor;
-	Texture2D sprite;
-	float size;
-	float txtSpacing;
-	const char* text;
-	float indent;
-	Font font;
+	class Button
+	{
+	private:
+		Rectangle rec;
+		Color normal;
+		Color hovered;
+		Color txtColor;
+		Texture2D sprite;
+		float size;
+		float txtSpacing;
+		const char* text;
+		float indent;
+		Font font;
 
-public:
-	Button();
+	public:
+		Button();
 
-	void update();
-	void draw();
+		void update();
+		void draw();
 
-	bool isPressed();
-	void setTxt(const char* txt);
-	void setPos(Vector2 newPos);
-};
+		bool isPressed();
+		void setTxt(const char* txt);
+		void setPos(Vector2 newPos);
+	};
+}

@@ -6,25 +6,29 @@
 #include "Topo.h"
 #include "Text.h"
 
-class MainMenu
+namespace Topo
 {
-private:
-	bool isActive;
+	class MainMenu
+	{
+	private:
+		bool isActive;
 
-	Text* title;
-	Text* version;
-	Button* play;
-	Button* credits;
-	Button* controls;
-	CheckBox* multiplayer;
+		Text* title;
+		Text* version;
+		Button* play;
+		Button* credits;
+		Button* controls;
+		CheckBox* multiplayer;
 
-public:
-	MainMenu();
-	~MainMenu();
+	public:
+		MainMenu();
+		~MainMenu();
 
-	void run(GameSettings* settings);
+		void run(GameSettings* settings);
 
-	void start();
-	void update(GameSettings* settings);
-	void draw();
-};
+		void start();
+		void update(GameSettings* settings);
+		void draw();
+	};
+
+}

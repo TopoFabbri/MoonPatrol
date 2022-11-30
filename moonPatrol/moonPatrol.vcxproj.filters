@@ -13,52 +13,49 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="objets">
-      <UniqueIdentifier>{fd56f37d-c14d-4b0c-ad11-e35a6ac1717f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\objects\game.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\player.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\enemy.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\bullets.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\Button.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Topo.cpp">
       <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\MainMenu.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\Text.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\GameSession.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\GameSettings.cpp">
-      <Filter>objets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\CheckBox.cpp">
-      <Filter>objets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\objects\Credits.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\objects\bullets.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\Button.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\CheckBox.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\objects\Controls.cpp">
-      <Filter>objets</Filter>
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\enemy.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\game.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\GameSession.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\GameSettings.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\MainMenu.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\player.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\Text.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

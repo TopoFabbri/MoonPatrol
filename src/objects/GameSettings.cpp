@@ -1,11 +1,14 @@
 #include "GameSettings.h"
 
-GameSettings::GameSettings()
+namespace Topo
 {
-	curScene = Menu;
-	multiplayer = false;
-}
+	GameSettings::GameSettings()
+	{
+		curScene = Menu;
+		multiplayer = false;
+	}
 
-GameSettings::~GameSettings()
-{
+	GameSettings::~GameSettings()
+	{
+	}
 }

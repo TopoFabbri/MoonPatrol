@@ -3,18 +3,21 @@
 
 
 
-struct Player
+namespace Topo
 {
-	float x;
-	float y;
-	float gravity;
-	int score;
-	int weight;
-	bool isAlive;
-	bool isJumping;
-	Vector2 speed;
-};
+	struct Player
+	{
+		float x;
+		float y;
+		float gravity;
+		int score;
+		int weight;
+		bool isAlive;
+		bool isJumping;
+		Vector2 speed;
+	};
 
-void initPlayer(Player& player, float x);
+	void initPlayer(Player& player, float x);
 
-void drawPlayer(Player& player, Color color);
+	void drawPlayer(Player& player, Color color);
+}
