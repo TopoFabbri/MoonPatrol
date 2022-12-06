@@ -5,7 +5,7 @@ namespace Topo
 	void initPlayer(Player& player, float x)
 	{
 		player.x = x;
-		player.y = static_cast<float>(GetScreenHeight() / 1.3);
+		player.y = static_cast<float>(GetScreenHeight() / 1.4);
 
 		player.score = 0;
 
@@ -13,7 +13,7 @@ namespace Topo
 
 		player.gravity = 0;
 
-		player.isJumping = false;
+		player.isJumping = true;
 
 		player.weight = 600;
 
