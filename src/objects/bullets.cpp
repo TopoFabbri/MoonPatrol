@@ -15,7 +15,6 @@ namespace Topo
 
 
 		return bullet;
-
 	}
 
 	void drawBullets(Bullet bullets[])

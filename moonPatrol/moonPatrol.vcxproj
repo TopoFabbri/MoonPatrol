@@ -101,14 +101,7 @@
       <AdditionalDependencies>winmm.lib;raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(TargetDir)res" (
-CD $(TargetDir)
-MKDIR res
-
-CD res
-
-XCOPY "$(SolutionDir)\res"  "$(TargetDir)res"
-)</Command>
+      <Command>call "$(SolutionDir)PostCompilation.bat" "$(SolutionDir)res" "$(TargetDir)res"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,14 +137,7 @@ XCOPY "$(SolutionDir)\res"  "$(TargetDir)res"
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(TargetDir)res" (
-CD $(TargetDir)
-MKDIR res
-
-CD res
-
-XCOPY "$(SolutionDir)\res"  "$(TargetDir)res"
-)</Command>
+      <Command>call "$(SolutionDir)PostCompilation.bat" "$(SolutionDir)res" "$(TargetDir)res"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
