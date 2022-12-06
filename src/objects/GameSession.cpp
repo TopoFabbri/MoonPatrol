@@ -30,11 +30,6 @@ namespace Topo
 			airEnemies[i] = initAirEnemy(airEnemies[i], static_cast<float>(i) * 100.0f);
 		}
 
-		for (int i = 0; i < maxBullets; i++)
-		{
-			bullets[i] = initBullet(bullets[i], player);
-		}
-
 		this->gSettings = gSettings;
 	}
 
@@ -65,11 +60,6 @@ namespace Topo
 		for (int i = 0; i < maxAirEnemies; i++)
 		{
 			airEnemies[i] = initAirEnemy(airEnemies[i], static_cast<float>(i) * 100.0f);
-		}
-
-		for (int i = 0; i < maxBullets; i++)
-		{
-			bullets[i] = initBullet(bullets[i], player);
 		}
 	}
 
